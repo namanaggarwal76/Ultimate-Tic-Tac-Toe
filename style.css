@@ -1,0 +1,177 @@
+body {
+  background-color: #FFE5F1;
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+  color: #4A154B ;
+  padding: 5px;
+}
+
+#overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.bigbox {
+  background-color: #FF9ECD;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 10px;
+  width: 90%;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 5px;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: #9F8BFF;
+  border-radius: 10px;
+  width: 90%;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 3px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.box.active {
+  border: 2px solid #000000;
+}
+
+button {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 3px solid transparent;
+  color: white;
+  box-sizing: border-box;
+}
+
+button.active {
+  border-color: #256c8a;
+}
+
+button.inactive {
+  background-color: #ccc;
+  pointer-events: none;
+}
+
+button.player1 {
+  background-color: #FF2D55;
+}
+
+button.player2 {
+  background-color: #2D7FFF ;
+}
+
+.box.winner1 {
+  background-color: #FF7DA3; 
+}
+
+.box.winner2 {
+  background-color: #7BB5FF;
+}
+
+#playerForm {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+#playerForm label {
+  font-weight: bold;
+  color: #256c8a;
+}
+
+#playerForm input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#playerForm button[type="submit"] {
+  background-color: #256c8a;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#playerForm button[type="submit"]:hover {
+  background-color: #1c5269;
+}
+
+#turnIndicator {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #6B3D7C;
+  margin-bottom: 1rem;
+}
+
+#winnerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#winnerMessage {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  color: #6B3D7C;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#newGameButton {
+  background-color: #256c8a;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: fit-content;
+}
+
+#newGameButton:hover {
+  background-color: #1c5269;
+}
