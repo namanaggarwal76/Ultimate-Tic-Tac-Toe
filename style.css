@@ -175,3 +175,67 @@ button.player2 {
 #newGameButton:hover {
   background-color: #1c5269;
 }
+
+/* New styles for the winner overlay new game button */
+#winnerNewGameButton {
+  background-color: #256c8a;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+#winnerNewGameButton:hover {
+  background-color: #1c5269;
+}
+
+#confirmOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+#confirmBox {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: inherit;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+#confirmBox button {
+  display: inline-block;
+  width: auto;
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+#confirmYes {
+  background-color: green;
+}
+
+#confirmNo {
+  background-color: red;
+}
+
+#confirmYes:hover {
+  background-color: darkgreen;
+}
+
+#confirmNo:hover {
+  background-color: darkred;
+}
