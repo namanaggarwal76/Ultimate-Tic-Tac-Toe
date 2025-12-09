@@ -13,7 +13,6 @@ const overlay = document.getElementById('overlay');
 const confirmOverlay = document.getElementById('confirmOverlay');
 const confirmYes = document.getElementById('confirmYes');
 const confirmNo = document.getElementById('confirmNo');
-const offlineButton = document.getElementById('offlineButton');
 
 let currentPlayer = 0;
 let activeBox = null;
@@ -29,7 +28,7 @@ function loadGameState() {
   const savedBigBoard = localStorage.getItem('bigBoard');
   const savedActiveBox = localStorage.getItem('activeBox');
   
-  playerNames = JSON.parse(savedPlayerNames);
+  if (savedPlayerNames) playerNames = JSON.parse(savedPlayerNames);
   if (savedCurrentPlayer) currentPlayer = parseInt(savedCurrentPlayer);
   if (savedBoard) {
     const parsedBoard = JSON.parse(savedBoard);
@@ -50,7 +49,11 @@ function loadGameState() {
       bigBoard[i] = parsedBigBoard[i];
       if (bigBoard[i] !== null) {
         const boxElem = document.getElementById(i.toString());
-        boxElem.classList.add(bigBoard[i] === 0 ? 'winner1' : 'winner2');
+        if (bigBoard[i] === 'draw') {
+          boxElem.style.backgroundColor = '#eee';
+        } else {
+          boxElem.classList.add(bigBoard[i] === 0 ? 'winner1' : 'winner2');
+        }
       }
     }
   }
@@ -105,6 +108,8 @@ function resetGame() {
   resetButtons();
   turnIndicator.textContent = playerNames[currentPlayer] + "'s turn";
   overlay.style.display = 'none';
+  const winnerOverlay = document.getElementById('winnerOverlay');
+  if (winnerOverlay) winnerOverlay.style.display = 'none';
   saveGameState();
 }
 
@@ -212,9 +217,7 @@ function checkBigBoardWinner() {
     if (count0 > count1) showWinnerOverlay(0);
     else if (count1 > count0) showWinnerOverlay(1);
     else {
-      const winnerMessage = document.getElementById('winnerMessage');
-      winnerMessage.textContent = "It's a tie!";
-      document.getElementById('winnerOverlay').style.display = 'flex';
+      showWinnerOverlay(null);
     }
   }
 }
@@ -222,7 +225,11 @@ function checkBigBoardWinner() {
 function showWinnerOverlay(player) {
   const winnerOverlay = document.getElementById('winnerOverlay');
   const winnerMessage = document.getElementById('winnerMessage');
-  winnerMessage.textContent = playerNames[player] + ' wins!!';
+  if (player === null) {
+    winnerMessage.textContent = "It's a tie!";
+  } else {
+    winnerMessage.textContent = playerNames[player] + ' wins!!';
+  }
   let newGameBtn = document.getElementById('winnerNewGameButton');
   if (!newGameBtn) {
     newGameBtn = document.createElement('button');
@@ -250,15 +257,6 @@ function updateActiveBox() {
       else box.classList.remove('active');
     });
   }
-}
-
-if (offlineButton) {
-	offlineButton.addEventListener('click', () => {
-		clearGameState();
-		resetGame();
-		overlay.style.display = 'flex';
-		window.location.href = "offline_index.html";
-	});
 }
 
 loadGameState();

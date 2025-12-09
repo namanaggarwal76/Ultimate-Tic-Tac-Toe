@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Tic-Tac-Toe - Online</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="online-style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="game-room-manager.js"></script>
+</head>
+<body>
+  <!-- Overlay for Online Mode Options -->
+  <div id="onlineModeOverlay">
+    <div class="modal-content">
+      <h2>Online Multiplayer</h2>
+      <p>Choose an option:</p>
+      <div class="button-group">
+        <button class="mode-button" id="createRoomBtn">Create Room</button>
+        <button class="mode-button" id="joinRoomBtn">Join Room</button>
+        <button class="mode-button secondary" id="backBtn">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay for Creating Room -->
+  <div id="createRoomOverlay">
+    <div class="modal-content">
+      <h2>Create Game Room</h2>
+      <form id="createRoomForm">
+        <div class="form-group">
+          <label for="createPlayerName">Your Name:</label>
+          <input type="text" id="createPlayerName" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="submit-btn">Create Room</button>
+          <button type="button" class="cancel-btn" id="cancelCreateBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Overlay for Joining Room -->
+  <div id="joinRoomOverlay">
+    <div class="modal-content">
+      <h2>Join Game Room</h2>
+      <form id="joinRoomForm">
+        <div class="form-group">
+          <label for="joinPlayerName">Your Name:</label>
+          <input type="text" id="joinPlayerName" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="roomIdInput">Room ID:</label>
+          <input type="text" id="roomIdInput" placeholder="Enter room ID" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="submit-btn">Join Room</button>
+          <button type="button" class="cancel-btn" id="cancelJoinBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Waiting for Player Overlay -->
+  <div id="waitingOverlay">
+    <div class="modal-content">
+      <h2>Waiting for Player...</h2>
+      <div class="loading-spinner"></div>
+      <p>Room ID: <strong id="displayRoomId"></strong></p>
+      <p class="small-text">Share this ID with your friend to join</p>
+      <button type="button" class="cancel-btn" id="cancelWaitBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Connection Status -->
+  <div id="connectionStatus">
+    <span id="statusIndicator" class="status-dot"></span>
+    <span id="statusText">Connecting...</span>
+  </div>
+
+  <!-- Game Area -->
+  <h1>Ultimate Tic-Tac-Toe - Online</h1>
+  <div class="game-info">
+    <div class="player-info">
+      <span id="player1Info">Player 1: <span id="player1Name">-</span></span>
+    </div>
+    <div class="player-info">
+      <span id="player2Info">Player 2: <span id="player2Name">-</span></span>
+    </div>
+  </div>
+
+  <h2 id="turnIndicator"></h2>
+
+  <div class="bigbox">
+    <script>
+      for (let i = 0; i < 9; i++) {
+        document.write('<div class="box" id="' + i + '">');
+        for (let j = 0; j < 9; j++) {
+          document.write('<button class="' + i + '" id="button' + i + j + '"></button>');
+        }
+        document.write('</div>');
+      }
+    </script>
+  </div>
+
+  <!-- Winner Overlay -->
+  <div id="winnerOverlay">
+    <div class="modal-content">
+      <h2 id="winnerMessage"></h2>
+      <button class="mode-button" id="returnToMenuBtn">Return to Menu</button>
+    </div>
+  </div>
+
+  <script src="online-game.js"></script>
+</body>
+</html>

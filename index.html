@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <script>
       function handleOnline() {
-        alert("Online mode coming soon!");
+        window.location.href = "online-index.html";
+      }
+      function handleOffline() {
+        window.location.href = "offline_index.html";
       }
     </script>
   </head>
@@ -15,7 +18,7 @@
     <h1>Ultimate Tic-Tac-Toe</h1>
     <p>Choose a game mode:</p>
     <div class="mode-options">
-      <button class="mode-button" id="offlineButton">Offline</button>
+      <button class="mode-button" onclick="handleOffline()">Offline</button>
       <button class="mode-button" onclick="handleOnline()">Online</button>
     </div>
     <style>

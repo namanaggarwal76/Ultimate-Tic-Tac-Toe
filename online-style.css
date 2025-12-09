@@ -1,0 +1,251 @@
+/* Online Game Styles */
+
+/* Connection Status */
+#connectionStatus {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  z-index: 100;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Modal Overlays */
+#onlineModeOverlay,
+#createRoomOverlay,
+#joinRoomOverlay,
+#waitingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #4A154B;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  color: #666;
+  margin: 10px 0;
+}
+
+.modal-content .small-text {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 15px;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.button-group .mode-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.button-group .mode-button:hover {
+  background-color: #0056b3;
+}
+
+.button-group .mode-button.secondary {
+  background-color: #6c757d;
+}
+
+.button-group .mode-button.secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Forms */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #256c8a;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form-group button {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Game Info */
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  max-width: 600px;
+  margin: 20px auto;
+  gap: 20px;
+}
+
+.player-info {
+  flex: 1;
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #333;
+  transition: opacity 0.3s;
+}
+
+.player-info #player1Name,
+.player-info #player2Name {
+  color: #007bff;
+  font-weight: 700;
+}
+
+/* Winner Overlay */
+#winnerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+#winnerOverlay .modal-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+#winnerOverlay h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+#winnerOverlay #returnToMenuBtn {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+    max-width: 90vw;
+  }
+
+  .game-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #connectionStatus {
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
